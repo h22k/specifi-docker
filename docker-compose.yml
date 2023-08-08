@@ -3,7 +3,7 @@ version: '3.9'
 services:
   front:
     build:
-      context: ./front
+      context: ../specifi-front
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
@@ -19,7 +19,7 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ../specifi-backend
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
