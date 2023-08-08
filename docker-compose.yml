@@ -14,7 +14,7 @@ services:
     networks:
       - specifi
     volumes:
-      - ./front:/app
+      - ../specifi-front:/app
       - /app/node_modules
 
   backend:
@@ -30,7 +30,7 @@ services:
       - specifi
     volumes:
       - vendor:/var/www/html/vendor/
-      - ./backend:/var/www/html
+      - ../specifi-backend:/var/www/html
   
   db:
     image: postgres:latest
@@ -67,4 +67,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ./backend/vendor
+      device: ../specifi-backend/vendor
