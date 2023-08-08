@@ -1,0 +1,70 @@
+version: '3.9'
+
+services:
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+      - redis
+      - db
+    networks:
+      - specifi
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - specifi
+    volumes:
+      - vendor:/var/www/html/vendor/
+      - ./backend:/var/www/html
+  
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: specifi
+      POSTGRES_PASSWORD: specifi
+      POSTGRES_DB: specifi
+      PGDATA: /var/lib/postgresql/data/specifi/
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    networks:
+      - specifi
+
+  test_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: specifi
+      POSTGRES_PASSWORD: specifi
+      POSTGRES_DB: specifi
+      PGDATA: /var/lib/postgresql/data/testing/
+    ports:
+      - "5433:5432"
+    networks:
+      - specifi
+
+networks:
+  specifi:
+    driver: bridge
+volumes:
+  vendor:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./backend/vendor
