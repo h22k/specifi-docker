@@ -33,3 +33,16 @@ after that, the last step is when you are inside of specifi-docker you should ru
 `docker compose exec backend bash` then run `php artisan migrate --seed`
 
 and finally you ready to go, visit localhost:5173 on your browser.
+
+| Element | is done |
+|---------|---------|
+|Ability for users to create, update, and delete tasks.      | 50%     |
+|Task categories (e.g., personal, work, etc.) with the ability to assign tasks to categories  | 50%     |
+|Task status (e.g., todo, in progress, done) with the ability to update the status of tasks    | 50%     |
+|User interface to view and filter tasks by category and status      | 0%      |
+|Ability to search for tasks by name or description       | 100%    |
+|Implement RESTful API endpoints for task management operations.         | 50%     |
+|Use Vue.js for the frontend implementation and interact with the backend APIs.         | 100%    |
+|Implement appropriate error handling and display error messages to users when necessary.         | 100%    |
+|Apply best practices in code organisation, maintainability, and security.         | 50%     |
+
