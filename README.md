@@ -30,6 +30,12 @@ Go inside specifi-docker folder then run
 
 after that, the last step is when you are inside of specifi-docker you should run 
 
+------
+## if there is no .env file inside backend
+`docker compose exec backend bash` then run `cp .env.example .env`
+
+--------
+
 `docker compose exec backend bash` then run `php artisan migrate --seed`
 
 and finally you ready to go, visit localhost:5173 on your browser.
